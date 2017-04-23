@@ -6,7 +6,7 @@ const emailService = require('./email-service');
 
 function regnsjekk() {
   innsamler.hentDagensVærData(dagensVærvarsler => {
-    const regnThreshold = 0.0;
+    const regnThreshold = 0.1;
     const regnfulleTimer = dagensVærvarsler.filter(værvarsel => {
           return værvarsel.precipitation[0].$.value >= regnThreshold;
     });
@@ -24,7 +24,7 @@ function regnsjekk() {
   });
 }
 
-schedule.scheduleJob('14 22 * * *', regnsjekk);
+schedule.scheduleJob('15 07 * * *', regnsjekk);
 console.log("Calculating clouds...");
 console.log("Generating good weather..");
 console.log("Script started.")
