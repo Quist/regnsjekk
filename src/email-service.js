@@ -9,8 +9,8 @@ exports.sendMail = function sendMail(subject, text, callback) {
         subject: subject,
         text: text
       }
+
     const apiKey = process.env.mailgunApiKey;
-    console.log(apiKey);
     request.post({url:'https://api:' + apiKey + '@api.mailgun.net/v3/sandbox47e877f4a7434270807583ba7eacdd48.mailgun.org/messages', formData: formData}, function optionalCallback(err, httpResponse, body) {
         if (err) {
           return console.error('upload failed:', err);
