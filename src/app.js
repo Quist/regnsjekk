@@ -1,5 +1,6 @@
 const moment = require('moment');
-var schedule = require('node-schedule');
+const schedule = require('node-schedule');
+const logger = require('./logger').logger;
 
 const innsamler = require('./innsamler');
 const emailService = require('./email-service');
@@ -19,12 +20,12 @@ function regnsjekk() {
         });
         emailService.sendMail("Regnvarsel for " + moment().format("D MMMM Y"), text);
     } else {
-        console.log("No rain today :-)");
+        logger.info("No rain today :-)");
     }
   });
 }
 
-schedule.scheduleJob('15 07 * * *', regnsjekk);
-console.log("Calculating clouds...");
-console.log("Generating good weather..");
-console.log("Script started.")
+schedule.scheduleJob('49 08 * * *', regnsjekk);
+logger.info("Calculating clouds...");
+logger.info("Generating good weather..");
+logger.info("Script started.")
