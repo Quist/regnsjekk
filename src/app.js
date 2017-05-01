@@ -18,7 +18,7 @@ function regnsjekk() {
             const time = moment(varsel.$.from).hour();
             text += time + " - " + (time + 1) + ": " +  varsel.precipitation[0].$.value + " mm\n";
         });
-        emailService.sendMail("Regnvarsel for " + moment().format("D MMMM Y"), text);
+        emailService.sendMail("Regnvarsel for " + moment().format("D MMMM Y"), text, () => {});
     } else {
         logger.info("No rain today :-)");
     }
@@ -30,6 +30,6 @@ logger.info("Calculating clouds...");
 logger.info("Generating good weather..");
 
 logger.info("Sending test email..");
-emailService.sendMail("Regnsjekk har startet opp", "Tenkte du ville vite det!");
+emailService.sendMail("Regnsjekk har startet opp", "Tenkte du ville vite det!", () => {});
 
 logger.info("Script started.");
