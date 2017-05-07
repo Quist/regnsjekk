@@ -25,7 +25,7 @@ function regnsjekk() {
   });
 }
 
-schedule.scheduleJob('25 07 * * *', regnsjekk);
+schedule.scheduleJob('25 05 * * *', regnsjekk);
 logger.info("Calculating clouds...");
 logger.info("Generating good weather..");
 
