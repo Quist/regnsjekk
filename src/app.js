@@ -36,4 +36,3 @@ logger.info("Sending test email..");
 emailService.sendMail("Regnsjekk har startet opp", "Tenkte du ville vite det!", () => {});
 
 logger.info("Script started.");
-regnsjekk();
