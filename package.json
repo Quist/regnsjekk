@@ -5,8 +5,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "yarn install && yarn run build && node dist/app.js",
-    "build": "yarn run flow && yarn run eslint src/ && babel src/ -d dist/",
-    "eslint:fix": "yarn run eslint src -- --fix"
+    "build": "flow && eslint src/ && babel src/ -d dist/",
+    "flow": "flow",
+    "eslint": "eslint src/ ",
+    "eslint:fix": "eslint src -- --fix"
   },
   "author": "",
   "license": "ISC",
