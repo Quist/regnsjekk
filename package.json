@@ -7,8 +7,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "yarn install && yarn run build && node dist/app.js",
-    "build": "flow && eslint src/ && babel src/ -d dist/",
+    "start": "node dist/app.js",
+    "build": "babel src/ -d dist/",
     "flow": "flow",
     "eslint": "eslint src/ ",
     "eslint:fix": "eslint src -- --fix"
