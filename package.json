@@ -2,6 +2,9 @@
   "name": "innsamler",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node" : ">=7.8.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "yarn install && yarn run build && node dist/app.js",
