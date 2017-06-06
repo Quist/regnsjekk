@@ -22,6 +22,7 @@ const regnsjekk = function () {
                 text += `${time } - ${ time + 1 }: ${ værvarsel.precipitation[0].$.value } mm\n`;
             });
             emailService.sendMail("joakim@lindquister.no", "Joakim Lindquister", `Regnvarsel for ${ moment().format("D MMMM Y")}`, text, () => {});
+            emailService.sendMail("benibe88@gmail.com", "Bendik Ibenholt", `Regnvarsel for ${ moment().format("D MMMM Y")}`, text, () => {});
         } else {
             logger.info("No rain today :-)");
         }
