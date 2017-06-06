@@ -11,7 +11,8 @@
     "strict": 0,
     "max-len": [1, 180],
     "no-console": 1,
-    "indent": ["error", 4]
+    "indent": ["error", 4],
+    "max-params": 1
   },
   "extends": [
     "plugin:flowtype/recommended",

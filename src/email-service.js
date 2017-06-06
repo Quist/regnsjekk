@@ -6,16 +6,14 @@ const snsService = require("./sns-service");
 const HTTP_STATUS_SUCCESS_END = 300;
 const HTTP_STATUS_SUCCESS_START = 200;
 
-exports.sendMail = function sendMail(subject: string, text: string, callback: () => void) {
+export type EmailFormData = {
+    from: string,
+    to: string,
+    subject: string,
+    text: string
+}
 
-    const formData = {
-        from: "Mailgun Sandbox <postmaster@sandbox47e877f4a7434270807583ba7eacdd48.mailgun.org>",
-        to: "Joakim Lindquister <joakim@lindquister.no>",
-        subject,
-        text
-
-    };
-
+const processEmail = function(formData: EmailFormData, callback: () => void) {
     const apiKey: ?string = process.env.mailgunApiKey;
     if (apiKey === null || apiKey === undefined) {
         throw new Error("No enviroment key for mailgunApiKey");
@@ -25,12 +23,22 @@ exports.sendMail = function sendMail(subject: string, text: string, callback: ()
             logger.error("Email upload failed:", err);
             snsService.sendDeveloperAlert("Email upload failed", err, callback);
         } else if (httpResponse.statusCode >= HTTP_STATUS_SUCCESS_END ||
-           httpResponse.statusCode < HTTP_STATUS_SUCCESS_START) {
+         httpResponse.statusCode < HTTP_STATUS_SUCCESS_START) {
             logger.error(`Error sending mail. Mailgun returned HTTP statusCode: ${ httpResponse.statusCode}`);
             snsService.sendDeveloperAlert("Email upload failed", `Error sending mail. Mailgun returned HTTP statusCode: ${ httpResponse.statusCode}`, callback);
         } else {
             logger.info("Email upload successful!  Server responded with:", body);
         }
     }
-    );
+  );
+};
+
+exports.sendMail = function sendMail(targetEmail: string, targetName: string, subject: string, text: string, callback: () => void) {
+    const formData = {
+        from: "Mailgun Sandbox <postmaster@sandbox47e877f4a7434270807583ba7eacdd48.mailgun.org>",
+        to: `${targetName} <${targetEmail}>`,
+        subject,
+        text
+    };
+    processEmail(formData, callback);
 };
