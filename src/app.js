@@ -15,7 +15,7 @@ const regnsjekk = function () {
         });
 
         if (regnfulleTimer.length > 0) {
-            let text = "God morgen, Joakim!\nVi beklager å måtte informere deg " +
+            let text = "God morgen!\nVi beklager å måtte informere deg " +
             "om at det er meldt regn i dag:\n";
             dagensVærvarsler.forEach(værvarsel => {
                 const time = moment(værvarsel.$.from).hour();
